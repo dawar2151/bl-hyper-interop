@@ -30,8 +30,13 @@ participant User identified by userId {
 participant Publisher extends User {
 
 }
-participant Producer extends User {
+participant Subscriber extends User {
 
+}
+asset Topic identified by topicId {
+  o String topicId
+  o String value
+  --> Message[] messages
 }
 
 asset Message identified by messageId {
@@ -39,14 +44,19 @@ asset Message identified by messageId {
   --> Publisher owner
   o String value
 }
-
+asset SubscriberTopic identified by topicSubscriberId{
+  o String topicSubscriberId
+   --> Topic topic
+  --> Subscriber  subscriber
+}
 transaction MessageTransaction {
-  --> Message asset
-  o String newValue
+  --> Topic topic
+  --> Message[] newMessages
 }
 
-event MessageEvent {
-  --> Message asset
-  o String oldValue
-  o String newValue
+
+event TopicEvent {
+  --> Topic asset
+  o Message[] oldMessages
+  o Message[] newMessages
 }

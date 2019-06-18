@@ -17,7 +17,7 @@
  */
 rule EverybodyCanReadEverything {
     description: "Allow all participants read access to all resources"
-    participant: "org.bl.network.Producer"
+    participant: "org.bl.network.Publisher"
     operation: READ
     resource: "org.bl.network.*"
     action: ALLOW
@@ -25,7 +25,7 @@ rule EverybodyCanReadEverything {
 
 rule EverybodyCanSubmitTransactions {
     description: "Allow all participants to submit transactions"
-    participant: "org.bl.network.Producer"
+    participant: "org.bl.network.Publisher"
     operation: CREATE
     resource: "org.bl.network.MessageTransaction"
     action: ALLOW
@@ -33,7 +33,7 @@ rule EverybodyCanSubmitTransactions {
 
 rule OwnerHasFullAccessToTheirAssets {
     description: "Allow all participants full access to their assets"
-    participant(p): "org.bl.network.Producer"
+    participant(p): "org.bl.network.Publisher"
     operation: ALL
     resource(r): "org.bl.network.Message"
     condition: (r.owner.getIdentifier() === p.getIdentifier())
