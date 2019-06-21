@@ -3,7 +3,7 @@
     "composer": "^0.20.8"
   },
   "name": "bl-interop",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "bl-interop",
   "scripts": {
     "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/bl-interop.bna",

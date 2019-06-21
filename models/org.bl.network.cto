@@ -18,20 +18,21 @@
 
 namespace org.bl.network
 
-participant User identified by userId {
+
+
+participant Publisher identified by email {
   o String userId
   o String name
   o String email
   o String firstName
   o String lastName
 }
-
-
-participant Publisher extends User {
-
-}
-participant Subscriber extends User {
-
+participant Subscriber identified by email {
+  o String userId
+  o String name
+  o String email
+  o String firstName
+  o String lastName
 }
 asset Topic identified by topicId {
   o String topicId
